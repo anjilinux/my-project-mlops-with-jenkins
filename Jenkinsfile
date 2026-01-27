@@ -14,7 +14,7 @@ pipeline {
                 python3 -m venv .venv
                 .venv/bin/pip install --upgrade pip
                 pwd
-                pip freeze > requirements.txt
+                
 
                 .venv/bin/pip install -r requirements.txt
                 '''
