@@ -6,6 +6,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
 mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_tracking_uri("./mlruns")
 mlflow.set_experiment("jenkins Classifier Experiment")
 
 with mlflow.start_run() as run:
