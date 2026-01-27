@@ -36,7 +36,19 @@ pipeline {
                 '''
             }
         }
+        stage("code-test-pytest"){
+            steps{
+                sh '''
+                    .venv/bin/python  test.py
 
+                '''
+            }
+        }
+    
+    
+    
+    
+    
     }
 }
 
