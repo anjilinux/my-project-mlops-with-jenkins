@@ -5,9 +5,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
-#mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_tracking_uri("./mlruns")
-mlflow.set_experiment("jenkins Classifier Experiment1")
+mlflow.set_tracking_uri("http://localhost:5000")
+
+mlflow.set_experiment("jenkins Classifier Experiment")
 
 with mlflow.start_run() as run:
     # Load data
@@ -30,7 +30,7 @@ with mlflow.start_run() as run:
     mlflow.log_metric("accuracy", accuracy)
 
     # Log model
-    mlflow.sklearn.log_model(sk_model=rf, name="random_forest_model1")
+    mlflow.sklearn.log_model(sk_model=rf, name="random_forest_model")
 
     print(f"Training accuracy: {accuracy}")
     print(f"Run ID: {run.info.run_id}")
