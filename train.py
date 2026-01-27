@@ -29,7 +29,7 @@ with mlflow.start_run() as run:
     mlflow.log_metric("accuracy", accuracy)
 
     # Log model
-    mlflow.sklearn.log_model(rf, "random_forest_model")
+    mlflow.sklearn.log_model(sk_model=rf, name="random_forest_model")
 
     print(f"Training accuracy: {accuracy}")
     print(f"Run ID: {run.info.run_id}")
