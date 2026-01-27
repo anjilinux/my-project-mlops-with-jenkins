@@ -11,9 +11,9 @@ pipeline {
             steps {
                 sh "pwd"
                 sh '''
-                mkdir -p /opt/mlflow/artifacts
-                chown -R jenkins:jenkins /opt/mlflow
-                chmod -R 777 /opt/mlflow
+                sudo mkdir -p /opt/mlflow/artifacts
+                sudo chown -R jenkins:jenkins /opt/mlflow
+                sudo chmod -R 777 /opt/mlflow
                 python3 -m venv .venv
                 .venv/bin/pip install --upgrade pip
                 pwd
