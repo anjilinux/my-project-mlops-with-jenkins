@@ -3,8 +3,8 @@ pipeline {
     stages{
         stage("checkout from git "){
             steps{
-                branch = master
-                url = https://github.com/anjilinux/my-project-mlops-with-jenkins.git
+                git branch: "master"
+                url:  "https://github.com/anjilinux/my-project-mlops-with-jenkins.git"
             }
         }
     }
