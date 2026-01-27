@@ -29,10 +29,10 @@ pipeline {
             }
         }
 
-        stage('Test Model') {
+        stage('evaluate.') {
             steps {
                 sh '''
-                .venv/bin/python -m pytest tests/
+                .venv/bin/python evaluate.py
                 '''
             }
         }
