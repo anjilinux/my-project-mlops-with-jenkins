@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
+                sh "pwd"
                 sh '''
                 python3 -m venv .venv
                 .venv/bin/pip install --upgrade pip
