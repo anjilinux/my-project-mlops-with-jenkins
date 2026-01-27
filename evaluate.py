@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 
 mlflow.set_tracking_uri("./mlruns")
 #mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_experiment("jenkins Classifier Experiment")
+mlflow.set_experiment("jenkins Classifier Experiment1")
 
 # Load data
 data = load_iris(as_frame=True)
@@ -17,7 +17,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Get latest run
 client = mlflow.tracking.MlflowClient()
-experiment = client.get_experiment_by_name("jenkins Classifier Experiment")
+experiment = client.get_experiment_by_name("jenkins Classifier Experiment1")
 
 runs = client.search_runs(
     experiment_ids=[experiment.experiment_id],
@@ -28,7 +28,7 @@ runs = client.search_runs(
 run_id = runs[0].info.run_id
 
 # Load model
-model_uri = f"runs:/{run_id}/random_forest_model"
+model_uri = f"runs:/{run_id}/random_forest_model1"
 model = mlflow.sklearn.load_model(model_uri)
 
 # Evaluate
