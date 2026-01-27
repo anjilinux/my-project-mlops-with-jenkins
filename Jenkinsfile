@@ -11,7 +11,8 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 sh '''
-                conda activate  kaira-310
+                python3 -m venv .venv
+                source .venv/bin/activate
                 #/home/bny/anaconda3/envs/kaira-310
                 # Install necessary Python packages including mlflow and project dependencies
                 pip install --upgrade pip
@@ -23,7 +24,7 @@ pipeline {
         stage('Train Model with MLflow') {
             steps {
                 sh '''
-                conda activate  kaira-310
+                source .venv/bin/activate
                 # Run the Python training script that uses MLflow
                 python3 train.py
                 '''
@@ -33,7 +34,7 @@ pipeline {
         stage('Test Model') {
             steps {
                 sh '''
-                conda activate  kaira-310
+                source .venv/bin/activate
                 # Run evaluation or testing script
                 python3 evaluate.py
                 '''
