@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh "pwd"
                 sh '''
-                python3.10 -m venv .venv
+                python3 -m venv .venv
                 .venv/bin/pip install --upgrade pip
                 pwd
                 pip freeze > requirements.txt
