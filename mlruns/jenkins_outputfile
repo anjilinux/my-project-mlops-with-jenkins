@@ -1,0 +1,103 @@
+Started by user anjireddy-jenkins
+Obtained Jenkinsfile from git https://github.com/anjilinux/my-project-mlops-with-jenkins.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/mlops-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/mlops-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/anjilinux/my-project-mlops-with-jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/anjilinux/my-project-mlops-with-jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/anjilinux/my-project-mlops-with-jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 632dce6586ba086958bb8e97f05bb8be97a47246 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 632dce6586ba086958bb8e97f05bb8be97a47246 # timeout=10
+Commit message: "added py-env"
+ > git rev-list --no-walk 632dce6586ba086958bb8e97f05bb8be97a47246 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (checkout from git )
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/mlops-pipeline/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/anjilinux/my-project-mlops-with-jenkins.git # timeout=10
+Fetching upstream changes from https://github.com/anjilinux/my-project-mlops-with-jenkins.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/anjilinux/my-project-mlops-with-jenkins.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 632dce6586ba086958bb8e97f05bb8be97a47246 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 632dce6586ba086958bb8e97f05bb8be97a47246 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 632dce6586ba086958bb8e97f05bb8be97a47246 # timeout=10
+Commit message: "added py-env"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] sh
++ pwd
+/var/lib/jenkins/workspace/mlops-pipeline
+[Pipeline] sh
++ sudo mkdir -p /opt/mlflow/artifacts
++ sudo chown -R jenkins:jenkins /opt/mlflow
++ sudo chmod -R 777 /opt/mlflow
++ python3 -m venv .venv
++ .venv/bin/pip install --upgrade pip
+Requirement already satisfied: pip in ./.venv/lib/python3.12/site-packages (25.3)
++ pwd
+/var/lib/jenkins/workspace/mlops-pipeline
++ .venv/bin/pip install -r requirements.txt
+->cryptography<47,>=43.0.0->mlflow->-r requirements.txt (line 1)) (3.0)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Train Model with MLflow)
+[Pipeline] sh
++ .venv/bin/python train.py
+Training accuracy: 1.0
+Run ID: 11689895efdb4c56ab20c75bf0592799
+🏃 View run skillful-foal-723 at: http://localhost:5000/#/experiments/61/runs/11689895efdb4c56ab20c75bf0592799
+🧪 View experiment at: http://localhost:5000/#/experiments/61
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (evaluate.)
+[Pipeline] sh
++ .venv/bin/python evaluate.py
+🏃 View run skillful-foal-723 at: http://localhost:5000/#/experiments/61/runs/11689895efdb4c56ab20c75bf0592799
+🧪 View experiment at: http://localhost:5000/#/experiments/61
+Evaluation accuracy: 1.0
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (code-test-pytest)
+[Pipeline] sh
++ .venv/bin/python test.py
+Model accuracy: 1.0
+✅ Model passed quality gate
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
