@@ -1,0 +1,13 @@
+INFO:     Started server process [165654]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8005 (Press CTRL+C to quit)
+INFO:     127.0.0.1:40286 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40296 - "GET /health HTTP/1.1" 200 OK
+/var/lib/jenkins/workspace/credit-card/venv/lib/python3.12/site-packages/sklearn/utils/validation.py:2691: UserWarning: X does not have valid feature names, but RandomForestClassifier was fitted with feature names
+  warnings.warn(
+INFO:     127.0.0.1:40310 - "POST /predict HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [165654]
